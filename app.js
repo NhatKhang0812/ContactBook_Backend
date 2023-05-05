@@ -3,7 +3,7 @@ const cors = require("cors");
 const contactsRouter = require("./app/routes/contact.route");
 const ApiError = require("./app/api-error");
 const bodyParser = require('body-parser');
-const AccountModel = require('./app/services/account.service');
+//const AccountModel = require('./app/services/account.service');
 
 const app = express();
 
@@ -18,51 +18,51 @@ app.get("/", (req, res) => {
     res.json({ message: "Welcome to contact book application."});
 });
 //Create register
-app.post('/register', (req, res, next)=> {
-    var username = req.body.username
-    var password = req.body.password
+// app.post('/register', (req, res, next)=> {
+//     var username = req.body.username
+//     var password = req.body.password
 
-    AccountModel.findOne({
-        username: username
-    })
-    .then(data => {
-        if(data){
-            res.json('Nguoi dung da ton tai!');
-        }else{
-            return AccountModel.create({
-                username: username,
-                password: password
-            })
-        }
-    })    
-    .then(data =>{
-        res.json("Tao tai khoan thanh cong");
-    })
-    .catch(err => {
-        res.status(500).json("Tao tai khoan that bai!");
-    })
-});
+//     AccountModel.findOne({
+//         username: username
+//     })
+//     .then(data => {
+//         if(data){
+//             res.json('Nguoi dung da ton tai!');
+//         }else{
+//             return AccountModel.create({
+//                 username: username,
+//                 password: password
+//             })
+//         }
+//     })    
+//     .then(data =>{
+//         res.json("Tao tai khoan thanh cong");
+//     })
+//     .catch(err => {
+//         res.status(500).json("Tao tai khoan that bai!");
+//     })
+// });
 
 //Create login
-app.post('/login', (req, res, next) => {
-    var username = req.body.username
-    var password = req.body.password
+// app.post('/login', (req, res, next) => {
+//     var username = req.body.username
+//     var password = req.body.password
     
-    AccountModel.findOne({
-        username: username,
-        password: password
-    })
-    .then(data =>{
-        if(data){
-            res.json('Đăng nhập thành công');
-        }else{
-            res.status(300).json('Tài khoản không đúng!');
-        }
-    })
-    .catch(err =>{
-        res.status(500).json('Xay ra loi tren server');
-    })
-})
+//     AccountModel.findOne({
+//         username: username,
+//         password: password
+//     })
+//     .then(data =>{
+//         if(data){
+//             res.json('Đăng nhập thành công');
+//         }else{
+//             res.status(300).json('Tài khoản không đúng!');
+//         }
+//     })
+//     .catch(err =>{
+//         res.status(500).json('Xay ra loi tren server');
+//     })
+// })
 
 
 // handle 404 response
